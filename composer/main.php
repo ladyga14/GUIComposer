@@ -1,5 +1,4 @@
 <?php
-include 'password.php';
 if (!isset($_POST['function']))
     die("You must specify a function");
 if (!function_exists($_POST['function']))
