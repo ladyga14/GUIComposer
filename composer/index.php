@@ -17,10 +17,10 @@
         }
 
         function call(func) {
-            $("#output").append("\nplease wait...\n");
-            $("#output").append("\n===================================================================\n");
-            $("#output").append("Executing Started");
-            $("#output").append("\n===================================================================\n");
+            $("#output").append("\n<span class='text-info'>please wait...\n");
+            $("#output").append("\n<span class='text-info'>===================================================================\n");
+            $("#output").append("<span class='text-info'>Executing Started");
+            $("#output").append("\n<span class='text-info'>===================================================================\n");
             $.post('main.php', {
                     "path": $("#path").val(),
                     "command": func,
@@ -28,9 +28,9 @@
                 },
                 function(data) {
                     $("#output").append(data);
-                    $("#output").append("\n===================================================================\n");
-                    $("#output").append("Execution Ended");
-                    $("#output").append("\n===================================================================\n");
+                    $("#output").append("\n<span class='text-info'>===================================================================\n");
+                    $("#output").append("<span class='text-info'>Execution Ended");
+                    $("#output").append("\n<span class='text-info'>===================================================================\n");
                 }
             );
         }
@@ -75,9 +75,10 @@
         }
 
         function requirePackage() {
-            pack = $('#package').val();
-            if (pack.length != 0) {
+            pack = $('#package');
+            if (pack.val().length != 0) {
                 call('require ' + pack);
+                pack.val('');
             }
         }
     </script>
@@ -87,7 +88,7 @@
             height: 350px;
             overflow: auto;
             background: #000;
-            color: #fff;
+            color: green;
         }
         
         ::-webkit-scrollbar {
@@ -97,6 +98,10 @@
         
         .buttons button {
             margin-top: 5px;
+        }
+        
+        warning {
+            color: #CCBF28;
         }
     </style>
 </head>
@@ -117,7 +122,7 @@
                 <br>
                 <div class="input-group">
                     <span class="input-group-addon">Package</span>
-                    <input id="package" type="text" name="" class="form-control disabled" placeholder="vendor/package">
+                    <input id="package" type="text" class="form-control disabled" placeholder="vendor/package">
                     <span class="input-group-btn">
                         <button id="require" onclick="requirePackage()" class="btn btn-success">require</button>
                     </span>
