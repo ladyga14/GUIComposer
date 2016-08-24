@@ -17,10 +17,8 @@
         }
 
         function call(func) {
-            $("#output").append("\n<span class='text-info'>please wait...\n");
-            $("#output").append("\n<span class='text-info'>===================================================================\n");
-            $("#output").append("<span class='text-info'>Executing Started");
-            $("#output").append("\n<span class='text-info'>===================================================================\n");
+            $("#output").append("\n<span class='text-info'>****************\n");
+            $("#output").append("<span class='text-info'>Exec Command\n");
             $.post('main.php', {
                     "path": $("#path").val(),
                     "command": func,
@@ -28,9 +26,8 @@
                 },
                 function(data) {
                     $("#output").append(data);
-                    $("#output").append("\n<span class='text-info'>===================================================================\n");
-                    $("#output").append("<span class='text-info'>Execution Ended");
-                    $("#output").append("\n<span class='text-info'>===================================================================\n");
+                    $("#output").append("<span class='text-info'>End");
+                    $("#output").append("\n<span class='text-info'>****************\n");
                 }
             );
         }
@@ -81,6 +78,13 @@
                 pack.val('');
             }
         }
+        function removePackage() {
+            packR = $('#packageR');
+            if (packR.val().length != 0) {
+                call('remove ' + packR.val());
+                packR.val('');
+            }
+        }
     </script>
     <style>
         #output {
@@ -127,6 +131,14 @@
                         <button id="require" onclick="requirePackage()" class="btn btn-success">require</button>
                     </span>
                 </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">Package</span>
+                    <input id="packageR" type="text" class="form-control disabled" placeholder="vendor/package">
+                    <span class="input-group-btn">
+                        <button id="remove" onclick="removePackage()" class="btn btn-danger">remove</button>
+                    </span>
+                </div>
                 <h4>List available commands:</h4>
                 <div class="buttons" role="commands">
                     <button id="install" onclick="call('install')" class="btn btn-success disabled">install</button>
@@ -134,6 +146,7 @@
                     <button id="dump-autoload" onclick="call('dump-autoload')" class="btn btn-danger disabled">dump-autoload</button>
                     <button id="list" onclick="call('list')" class="btn btn-primary disabled">list</button>
                     <button id="clear" onclick="clearConsole()" class="btn btn-danger disabled">clear</button>
+                    <button id="diagnose" onclick="call('diagnose')" class="btn btn-danger disabled">diagnose</button>
                 </div>
                 <h3>Console Output:</h3>
                 <pre id="output" class="well"></pre>

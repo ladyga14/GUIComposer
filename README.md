@@ -10,7 +10,7 @@ Installation
 Steps to use NoConsoleComposer :
 
  1. Download the source from above and put the `composer` folder where you can access it from web. For shared hosting, it would be under the `public_html` folder most probably. I'll assume that you put the `composer` folder directly under `public_html`. i.e, `public_html/composer`.
- 2. Access NoConsoleComposer from `http://yourdomain.com/composer/index.php`. You'll see a screen like this :![](http://i.imgur.com/qXyrcr5.png?1)The screen is doing what it is saying, i.e, downloading composer from web. It will show updates and then the page will refresh. And the buttons will show up :![](http://i.imgur.com/c3KE4HE.png?1)
+ 2. Access NoConsoleComposer from `http://yourdomain.com/composer/index.php`. The screen is doing what it is saying, i.e, downloading composer from web. It will show updates and then the page will refresh. And the buttons will show up :![](http://i.imgur.com/sdGwh0A.png)
 
 Usage
 ==================
