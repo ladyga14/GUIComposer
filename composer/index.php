@@ -77,7 +77,7 @@
         function requirePackage() {
             pack = $('#package');
             if (pack.val().length != 0) {
-                call('require ' + pack);
+                call('require ' + pack.val());
                 pack.val('');
             }
         }
